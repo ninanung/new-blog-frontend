@@ -1,8 +1,14 @@
-let http = require('http');
-let express = require('express');
-let app = express();
+const http = require('http');
+const express = require('express');
+const app = express();
 app.use(express.urlencoded());
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
+
+const db = require('./db');
+const me = require('./me');
+
+app.use('/db', db);
+app.use('/me', me);
 
 const port = 3000;
 
