@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Board extends React.Component {
+class Home extends React.Component {
     render() {
         return (
             <div>
@@ -10,4 +10,4 @@ class Board extends React.Component {
     }
 };
 
-export default Board;
+export default Home;
