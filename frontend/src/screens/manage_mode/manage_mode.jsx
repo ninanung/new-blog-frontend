@@ -1,12 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import styles from './manage_mode.css';
 
 import Modal from '../../components/modal/modal';
+import Button from '../../components/button/button';
 
 class ManageMode extends React.Component {
     returnModalContent = () => {
         return (
             <div>
-                
+                <div className={styles.close}>
+                    <Button text='Close' onClickFunction={this.props.onClickFunction} />
+                </div>
+                <h1>test</h1>
             </div>
         )
     }
@@ -17,5 +24,9 @@ class ManageMode extends React.Component {
         )
     }
 };
+
+ManageMode.propTypes = {
+    onClickFunction: PropTypes.func.isRequired,
+}
 
 export default ManageMode;

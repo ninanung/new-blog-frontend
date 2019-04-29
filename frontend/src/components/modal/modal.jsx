@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Modal extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+import styles from './modal.css'
 
+class Modal extends React.Component {
     render() {
         return (
-            <div className='modal-form'>
+            <div className={styles.modal}>
                 {this.props.content}
             </div>
         )

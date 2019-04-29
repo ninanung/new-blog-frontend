@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+
+import styles from './App.css';
 
 import Header from './screens/header/header';
 import Router from './router/router';
@@ -7,11 +8,11 @@ import Router from './router/router';
 class App extends React.Component {
   render() {
     return (
-      <div className='App'>
-        <div className='App-header'>
+      <div className={styles.App}>
+        <div className={styles.header}>
           <Header />
         </div>
-        <div className='App-body'>
+        <div className={styles.body}>
           <Router/>
         </div>
       </div>
