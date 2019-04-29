@@ -14,6 +14,10 @@ class MakePost extends React.Component {
         }
     }
 
+    componentWillMount() {
+        
+    }
+
     onEditClick = () => {
 
     }
