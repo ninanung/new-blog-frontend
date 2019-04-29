@@ -1,2 +1,2 @@
 # new-blog
-New personal blog with Node.js, MongoDB and React.js.
+New personal blog's frontend part.
