@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './button.css';
+
 class Button extends React.Component {
     render() {
         const {text, onClickFunction} = this.props;
         return (
-            <button onClick={onClickFunction}>{text}</button>
+            <button className='button' onClick={onClickFunction}>{text}</button>
         )
     }
 };

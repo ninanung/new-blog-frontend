@@ -1,0 +1,15 @@
+.header {
+    width: 100%; height: 60px; border-bottom: 1px solid black;
+}
+
+.header_title {
+    float: left; margin: 15px 0 0 10px; width: 150px; height: auto;
+}
+
+.button_group {
+    position: relative; float: right; margin: 15px 10px 0 0; width: auto;
+}
+
+.header_link {
+    text-decoration: none; color: black;
+}

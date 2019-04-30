@@ -5,13 +5,12 @@
 }
 
 .manage_mode_body {
-    background-color: var(--bg-color);
+    background-color: var(--bg-color); padding-bottom: 10px;
 }
 
 @media (max-width: 500px) {
     .manage_mode_body {
-        width: calc(100% - 50px);
-        margin-left: 25px; margin-right: 25px;
+        width: calc(100% - 50px); margin-left: 25px; margin-right: 25px;
     }
 
     .manage_mode_img {
