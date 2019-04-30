@@ -1,28 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+/*import request from 'request';
+import rp from 'request-promise';
 
-import styles from './manage_mode.css';
+import constants from '../../constants/server';*/
+
+import './manage_mode.css';
+
+import pass from '../../assets/youshallnotpass.jpg';
 
 import Modal from '../../components/modal/modal';
 import Button from '../../components/button/button';
 
 class ManageMode extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            input: '',
+        }
+    }
+
+    onInputChange = (e) => {
+        this.setState({
+            input: e.target.value,
+        })
+    }
+
+    onYesClick = () => {
+        console.log(this.state.input);
+        /*
+            request를 이용한 server로의 데이터 전송 필요.
+        */
+    }
+
     returnModalContent = () => {
         return (
-            <div>
-                <div className={styles.close}>
-                    <Button text='Close' onClickFunction={this.props.onClickFunction} />
-                </div>
-                <div className={styles.body}>
-                    
-                </div>
+            <div className='manage_mode_body'>
+                <img alt='You! Shall Not! Pass!!!!!!!!' className='manage_mode_img' src={pass} />
+                <input type='text' onChange={this.onInputChange} />
+                <Button text='Fly, you fools' onClickFunction={this.onYesClick} />
             </div>
         )
     }
 
     render() {
         return (
-            <Modal content={this.returnModalContent()} />
+            <Modal onCloseClick={this.props.onClickFunction} content={this.returnModalContent()} />
         )
     }
 };

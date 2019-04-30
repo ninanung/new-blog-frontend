@@ -29,12 +29,12 @@ class Header extends React.Component {
         return (
             <div>
                 <div className='button-group'>
-                    {localStorage.isMe ? <Button text='Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
-                    {!localStorage.isMe ? <Button text='Manage' onClickFunction={this.onManageClick.bind(null, true)} /> : null}
+                    {localStorage.isMe ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
+                    {!localStorage.isMe ? <Button text='Gandalf?' onClickFunction={this.onManageClick.bind(null, true)} /> : null}
                 </div>
                 <div className='modal-group'>
                     {this.state.manage ? <ManageMode onClickFunction={this.onManageClick.bind(null, false)}/> : null}
-                    {this.state.post ? <MakePost onClickFunction={this.onPostClick.bind(null, false)}/> : null}
+                    {this.state.post ? <MakePost edit={false} onClickFunction={this.onPostClick.bind(null, false)}/> : null}
                 </div>
             </div>
         )
