@@ -13,7 +13,9 @@ class ManageMode extends React.Component {
                 <div className={styles.close}>
                     <Button text='Close' onClickFunction={this.props.onClickFunction} />
                 </div>
-                <h1>test</h1>
+                <div className={styles.body}>
+                    
+                </div>
             </div>
         )
     }
