@@ -4,6 +4,7 @@ import './App.css';
 
 import Header from './screens/header/header';
 import Router from './router/router';
+import Footer from './screens/footer/footer';
 
 class App extends React.Component {
   render() {
@@ -14,6 +15,9 @@ class App extends React.Component {
         </div>
         <div className='app_body'>
           <Router/>
+        </div>
+        <div className='app_footer'>
+          <Footer />
         </div>
       </div>
     );

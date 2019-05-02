@@ -2,6 +2,8 @@ import React from 'react';
 
 import './header.css';
 
+import haruko from '../../assets/haruko_bass.gif';
+
 import Button from '../../components/button/button';
 import ManageMode from '../manage_mode/manage_mode';
 import MakePost from '../make_post/make_post';
@@ -30,7 +32,7 @@ class Header extends React.Component {
     render() {
         return (
             <div className='header'>
-                <h2 className='header_title'><a className='header_link' href='/'>Geek's Blog!</a></h2>
+                <a href='/'><img className='header_gif' src={haruko} alt='bo bobobo bong' /></a>
                 <div className='button_group'>
                     {localStorage.isMe ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
                     {!localStorage.isMe ? <Button text='Gandalf?' onClickFunction={this.onManageClick.bind(null, true)} /> : null}
