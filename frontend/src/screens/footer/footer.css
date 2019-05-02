@@ -1,7 +1,7 @@
 .footer_github_icon {
-    width: 30px; height: auto; margin: 10px 0;
+    width: 30px; height: auto; margin-top: 10px;
 }
 
-.footer_text {
-    color: black
+.footer_link {
+    width: 100px; height: 100px;
 }

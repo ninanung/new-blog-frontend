@@ -16,5 +16,5 @@
 }
 
 .app_footer {
-  height: var(--footer-height); border-top: 1px solid black;
+  height: var(--footer-height); border-top: 1px solid #D6C7C9;
 }
