@@ -24,6 +24,7 @@ class MakePost extends React.Component {
             title: '',
             badge: [],
             editor: null,
+            html: null,
         }
     }
 
@@ -45,7 +46,8 @@ class MakePost extends React.Component {
     }
     
     onPostClick = () => {
-        console.log(this.state.editor.getHtml());
+        const content = this.state.editor.getHtml();
+        console.log(content);
         /*
             request를 이용한 server로의 데이터 전송 필요.
         */
@@ -72,7 +74,9 @@ class MakePost extends React.Component {
 
     render() {
         return (
-            <Modal onCloseClick={this.props.onClickFunction} content={this.returnModalContent()} />
+            <div>
+                <Modal onCloseClick={this.props.onClickFunction} content={this.returnModalContent()} />
+            </div>
         )
     }
 };

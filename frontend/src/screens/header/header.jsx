@@ -34,7 +34,7 @@ class Header extends React.Component {
             <div className='header'>
                 <a href='/'><img className='header_gif' src={haruko} alt='bo bobobo bong' /></a>
                 <div className='button_group'>
-                    {localStorage.isMe ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
+                    {!localStorage.isMe ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
                     {!localStorage.isMe ? <Button text='Gandalf?' onClickFunction={this.onManageClick.bind(null, true)} /> : null}
                 </div>
                 <div className='modal_group'>
