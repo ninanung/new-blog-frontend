@@ -5,10 +5,16 @@ import PostElement from '../post_element/post_element';
 
 class PostList extends React.Component {
     render() {
+        let posts;
+        if(this.props.count) {
+            posts = this.props.posts.slice(0, this.props.count);
+        } else {
+            posts = this.props.posts.slice();
+        }
         return (
             <div className='post_list'>
                 {
-                    this.props.posts.map((post, index) => {
+                    posts.map((post, index) => {
                         <PostElement post={post} index={index} />
                     })
                 }
@@ -19,6 +25,7 @@ class PostList extends React.Component {
 
 PostList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+    count: PropTypes.number,
 }
 
 export default PostList;
