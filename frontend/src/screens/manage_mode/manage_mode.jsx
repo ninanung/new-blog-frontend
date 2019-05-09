@@ -12,6 +12,16 @@ import pass from '../../assets/youshallnotpass.jpg';
 import Modal from '../../components/modal/modal';
 import Button from '../../components/button/button';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../store/action';
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        manager_login: actions.manager_login,
+    }, dispatch)
+}
+
 class ManageMode extends React.Component {
     constructor(props) {
         super(props);
@@ -31,6 +41,8 @@ class ManageMode extends React.Component {
         /*
             request를 이용한 server로의 데이터 전송 필요.
         */
+        this.props.manager_login();
+        window.location.href = '/';
     }
 
     returnModalContent = () => {
@@ -54,4 +66,4 @@ ManageMode.propTypes = {
     onClickFunction: PropTypes.func.isRequired,
 }
 
-export default ManageMode;
+export default connect(null, mapDispatchToProps)(ManageMode);
