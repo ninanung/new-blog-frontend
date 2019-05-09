@@ -5,19 +5,18 @@ import PostElement from '../post_element/post_element';
 
 class PostList extends React.Component {
     render() {
-        let posts;
-        if(this.props.count) {
-            posts = this.props.posts.slice(0, this.props.count);
+        let renderPosts;
+        const { posts, count } = this.props;
+        if(count) {
+            renderPosts = posts.slice(0, count);
         } else {
-            posts = this.props.posts.slice();
+            renderPosts = posts.slice();
         }
         return (
             <div className='post_list'>
-                {
-                    posts.map((post, index) => {
-                        <PostElement post={post} index={index} />
-                    })
-                }
+                {renderPosts.length > 0 ? posts.map((post, index) => {
+                    return <PostElement post={post} index={index} />
+                }) : <div className='post_list_empty_text'>No Posts</div>}
             </div>
         )
     }

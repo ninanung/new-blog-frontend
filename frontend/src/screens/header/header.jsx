@@ -46,7 +46,8 @@ class Header extends React.Component {
     }
 
     onLogoutClick = () => {
-        if(!confirm('Do you want to log-out?')) return ;
+        const confirmed = window.confirm('Do you want to log-out?');
+        if(!confirmed) return ;
         this.props.manager_logout();
         return window.location.href = '/';
     }

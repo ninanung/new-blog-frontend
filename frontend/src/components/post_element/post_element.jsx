@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class PostElement extends React.Component {
     render() {
-        const { post, index } = this.props;
+        const { post } = this.props;
         return (
             <div className='post_element'>
                 <h3 className='post_element_title'>{ post.title }</h3>

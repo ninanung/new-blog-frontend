@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import notFoundImage from '../assets/404.jpg';
 
 import Home from '../screens/home/home';
+import Board from '../screens/board/board';
 
 class NotFound extends React.Component {
     render() {
@@ -26,8 +27,9 @@ class Router extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route component={NotFound} />
+                    <Route exact path='/' component={ Home } />
+                    <Route exact path='/board' component={ Board } />
+                    <Route component={ NotFound } />
                 </Switch>
             </BrowserRouter>
         )
