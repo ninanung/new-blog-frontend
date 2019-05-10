@@ -7,7 +7,9 @@ import './router_link.css';
 class RouterLink extends React.Component {
     render() {
         return (
-            <Link to={this.props.href}><div className='link_style'>{this.props.text}</div></Link>
+            <div className='link-style'>
+                <Link to={this.props.href}>{this.props.text}</Link>
+            </div>
         )
     }
 }

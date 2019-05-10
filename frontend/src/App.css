@@ -12,9 +12,13 @@
 }
 
 .app_body {
-  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px);
+  height: calc(100vh - var(--header-height) - var(--footer-height) - 1px); overflow: scroll;
 }
 
 .app_footer {
   height: var(--footer-height); border-top: 1px solid #D6C7C9;
+}
+
+::-webkit-scrollbar {
+  width: 0; height: 0;
 }

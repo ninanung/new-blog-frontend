@@ -1,3 +1,8 @@
 .make_post_body {
     background-color: white; text-align: left; margin-left: 25px; margin-right: 25px;
+    height: 70vh;
+}
+
+#editSection {
+    height: 65vh !important;
 }

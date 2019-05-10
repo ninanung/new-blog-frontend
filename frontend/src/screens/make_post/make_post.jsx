@@ -34,7 +34,6 @@ class MakePost extends React.Component {
                 el: document.querySelector('#editSection'),
                 initialEditType: 'markdown',
                 previewStyle: 'vertical',
-                height: '500px'
             }),
         });
     }

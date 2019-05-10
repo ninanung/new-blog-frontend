@@ -15,20 +15,22 @@ import { bindActionCreators } from 'redux';
 import * as actions from './store/action';
 
 const mapStateToProps = (state) => {
-    return {
-        posts: state.posts,
-    }
+  return {
+    posts: state.posts,
+    last_updated: state.last_updated,
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    renew_posts: actions.renew_posts
+    renew_posts: actions.renew_posts,
+    renew_last_updated: actions.renew_last_updated,
   }, dispatch);
 }
 
 class App extends React.Component {
   componentWillMount() {
-    const { posts, renew_posts } = this.props;
+    const { posts, last_updated, renew_posts } = this.props;
     const now = new Date().getTime();
     if(posts.length === 0) {
       console.log('empty!');
@@ -36,12 +38,14 @@ class App extends React.Component {
         서버에서 포스트 리스트 받아옮
       */
       //renew_posts();
+      //renew_last_updated(now);
     } else {
-      if(now - posts[0].date > 3600000) {
+      if(now - last_updated > 3600000) {
         /*
           서버에서 포스트 리스트 받아옮
         */
         //renew_posts();
+        //renew_last_updated(now);
       }
     }
   }

@@ -1,7 +1,7 @@
-.link_style {
-    text-decoration: none; color: #444444;
+a {
+    text-decoration: overline underline; color: #444444; text-decoration-style: dotted;
 }
 
-.link_style:hover {
+a:hover {
     color: #BD2235;
 }

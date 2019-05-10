@@ -56,10 +56,12 @@ class Header extends React.Component {
         return (
             <div className='header'>
                 <a href='/'><img className='header_gif' src={haruko} alt='bo bobobo bong' /></a>
-                <div className='button_group'>
-                    {!this.props.manager ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
+                <div className='button_group_right'>
                     {!this.props.manager ? <Button text='Gandalf?' onClickFunction={this.onManageClick.bind(null, true)} /> : null}
                     {!this.props.manager ? <Button text='Logout' onClickFunction={this.onLogoutClick} /> : null}
+                </div>
+                <div className='button_group_left'>
+                    {!this.props.manager ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
                 </div>
                 <div className='modal_group'>
                     {this.state.manage ? <ManageMode onClickFunction={this.onManageClick.bind(null, false)}/> : null}

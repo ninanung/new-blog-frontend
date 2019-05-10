@@ -6,6 +6,10 @@
     margin: 15px 0; width: auto; height: 80%; border-radius: 10px;
 }
 
-.button_group {
+.button_group_right {
     position: absolute; right: 10px; top: 15px; width: auto;
+}
+
+.button_group_left {
+    position: absolute; left: 10px; top: 15px; width: auto;
 }
