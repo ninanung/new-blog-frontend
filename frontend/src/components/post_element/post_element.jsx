@@ -11,7 +11,7 @@ class PostElement extends React.Component {
 
         return (
             <div className='post_element'>
-                <h3 className='post_element_title'>{ post.title }</h3>
+                <h3 className='post_element_title'><a className='post_element_title_link' href='/'>{ post.title }</a></h3>
                 <p className='post_element_date'>{ dateString }</p>
             </div>
         )

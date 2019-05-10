@@ -34,7 +34,7 @@ class Home extends React.Component {
                     <h3 className='home_body_recent'>Recent Posts</h3>
                     <PostList posts={posts} count={10} />
                 </div>
-                <RouterLink text='Wanna see more?' href='/board' />
+                <RouterLink text='See more?' href='/board' />
             </div>
         )
     }

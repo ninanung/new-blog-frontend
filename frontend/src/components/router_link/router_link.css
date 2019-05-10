@@ -1,7 +1,11 @@
-a {
-    text-decoration: overline underline; color: #444444; text-decoration-style: dotted;
+.link_style > a {
+    text-decoration: none; color: #444444; border-bottom: solid 1px #444444;
 }
 
-a:hover {
+.link_style > a:hover {
     color: #BD2235;
+}
+
+.link_style {
+    margin-top: 40px;
 }
