@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 /*import request from 'request';
 import rp from 'request-promise';
-
-import constants from '../../constants/server';*/
+import { LOGIN } from '../../constants/server';*/
 
 import './manage_mode.css';
 

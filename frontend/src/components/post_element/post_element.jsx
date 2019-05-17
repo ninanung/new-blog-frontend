@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import './post_element.css';
 
@@ -12,7 +13,7 @@ class PostElement extends React.Component {
 
         return (
             <div className='post_element'>
-                <h3 className='post_element_title'><a className='post_element_title_link' href={url}>{ post.title }</a></h3>
+                <h3 className='post_element_title'><Link to={ url }>{ post.title }</Link></h3>
                 <p className='post_element_date'>{ dateString }</p>
             </div>
         )

@@ -1,10 +1,9 @@
 import React from 'react';
 import Editor from 'tui-editor';
 import PropTypes from 'prop-types';
-/*import request from 'request';
-import rp from 'request-promise';
-
-import constants from '../../constants/server';*/
+/*import { CREATE_POST } from '../../constants/server';
+import request from 'request';
+import rp from 'request-promise';*/
 
 import './make_post.css';
 

@@ -1,11 +1,22 @@
 import React from 'react';
 
+import MakePost from '../../screens/make_post/make_post';
+
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../store/action';
 
 const mapStateToProps = (state) => {
     return {
         posts: state.posts,
+        manager: state.manager,
     }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        renew_last_updated: actions.renew_last_updated,
+    }, dispatch)
 }
 
 class Post extends React.Component {
@@ -45,4 +56,4 @@ class Post extends React.Component {
     }
 };
 
-export default connect(mapStateToProps)(Post);
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
