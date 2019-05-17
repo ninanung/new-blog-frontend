@@ -14,7 +14,7 @@ class PostList extends React.Component {
         }
         return (
             <div className='post_list'>
-                {renderPosts.length > 0 ? posts.map((post, index) => {
+                {renderPosts.length > 0 ? renderPosts.map((post, index) => {
                     return <PostElement post={post} index={index} />
                 }) : <div className='post_list_empty_text'>No Posts</div>}
             </div>

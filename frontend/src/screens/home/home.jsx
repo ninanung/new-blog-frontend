@@ -18,7 +18,7 @@ class Home extends React.Component {
     render() {
         //const { posts } = this.props;
         const posts = [];
-        for(let i = 0; i < 5; i++) {
+        for(let i = 0; i < 10; i++) {
             posts.push({
                 title: `test title ${i}`,
                 date: new Date().getTime(),
@@ -32,7 +32,7 @@ class Home extends React.Component {
                 </Helmet>
                 <div className='home_body_latest'>
                     <h3 className='home_body_recent'>Recent Posts</h3>
-                    <PostList posts={posts} count={10} />
+                    <PostList posts={posts} count={5} />
                 </div>
                 <RouterLink text='See more?' href='/board' />
             </div>

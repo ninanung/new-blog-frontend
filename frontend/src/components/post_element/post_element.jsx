@@ -5,13 +5,14 @@ import './post_element.css';
 
 class PostElement extends React.Component {
     render() {
-        const { post } = this.props;
+        const { post, index } = this.props;
         const date = new Date(post.date);
         const dateString = `${date.getFullYear()} ${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        const url = `/post/${index}`
 
         return (
             <div className='post_element'>
-                <h3 className='post_element_title'><a className='post_element_title_link' href='/'>{ post.title }</a></h3>
+                <h3 className='post_element_title'><a className='post_element_title_link' href={url}>{ post.title }</a></h3>
                 <p className='post_element_date'>{ dateString }</p>
             </div>
         )
