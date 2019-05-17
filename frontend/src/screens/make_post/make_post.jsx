@@ -22,7 +22,6 @@ class MakePost extends React.Component {
         super(props);
         this.state = {
             title: '',
-            badge: [],
             editor: null,
             html: null,
         }
@@ -38,6 +37,12 @@ class MakePost extends React.Component {
         });
     }
 
+    onTitleChange = (e) => {
+        this.setState({
+            title: e.target.value,
+        });
+    }
+
     onEditClick = () => {
         /*
             request를 이용한 server로의 데이터 전송 필요.
@@ -46,6 +51,7 @@ class MakePost extends React.Component {
     
     onPostClick = () => {
         const content = this.state.editor.getHtml();
+        console.log(this.state.title);
         console.log(content);
         /*
             request를 이용한 server로의 데이터 전송 필요.
@@ -65,6 +71,10 @@ class MakePost extends React.Component {
         }
         return (
             <div className='make_post_body'>
+                <label>
+                    Title
+                    <input onChange={this.onTitleChange} className='make_post_title' type='text' />
+                </label>
                 <div id='editSection'></div>
                 <Button text={text} onClickFunction={onClickFunction} />
             </div>

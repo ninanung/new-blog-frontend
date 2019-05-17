@@ -33,7 +33,6 @@ class App extends React.Component {
     const { posts, last_updated, renew_posts } = this.props;
     const now = new Date().getTime();
     if(posts.length === 0) {
-      console.log('empty!');
       /*
         서버에서 포스트 리스트 받아옮
       */
