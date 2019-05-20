@@ -1,7 +1,7 @@
 import React from 'react';
 import Editor from 'tui-editor';
 import PropTypes from 'prop-types';
-/*import { CREATE_POST } from '../../constants/server';
+/*import { CREATE_POST, EDIT_POST } from '../../constants/server';
 import request from 'request';
 import rp from 'request-promise';*/
 
@@ -43,6 +43,9 @@ class MakePost extends React.Component {
     }
 
     onEditClick = () => {
+        const content = this.state.editor.getHtml();
+        console.log(this.state.title);
+        console.log(content);
         /*
             request를 이용한 server로의 데이터 전송 필요.
         */
