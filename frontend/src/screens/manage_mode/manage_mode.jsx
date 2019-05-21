@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-/*import request from 'request';
-import rp from 'request-promise';
-import { LOGIN } from '../../constants/server';*/
+import { LOGIN } from '../../constants/server';
 
 import './manage_mode.css';
 
@@ -36,19 +34,26 @@ class ManageMode extends React.Component {
     }
 
     onYesClick = () => {
-        console.log(this.state.input);
-        /*
-            request를 이용한 server로의 데이터 전송 필요.
-        */
-        this.props.manager_login();
-        window.location.href = '/';
+        console.log(LOGIN);
+        fetch(LOGIN, {
+            method: 'get',
+            headers: new Headers({
+                'Auth': this.state.input,
+            })
+        }).then(function(res) {
+            console.log(res);
+        }).catch(function(err) {
+            console.log(err);
+        })
+        //this.props.manager_login();
+        //window.location.href = '/';
     }
 
     returnModalContent = () => {
         return (
             <div className='manage_mode_body'>
                 <img alt='You! Shall Not! Pass!!!!!!!!' className='manage_mode_img' src={pass} />
-                <input type='text' onChange={this.onInputChange} />
+                <input type='password' onChange={this.onInputChange} />
                 <Button text='Fly, you fools' onClickFunction={this.onYesClick} />
             </div>
         )
