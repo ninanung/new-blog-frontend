@@ -34,19 +34,20 @@ class ManageMode extends React.Component {
     }
 
     onYesClick = () => {
-        console.log(LOGIN);
+        const { manager_login } = this.props;
         fetch(LOGIN, {
             method: 'get',
             headers: new Headers({
-                'Auth': this.state.input,
+                'auth': this.state.input,
             })
-        }).then(function(res) {
-            console.log(res);
+        }).then(res => res.json()).then(function(data) {
+            if(data) {
+                manager_login();
+                window.location.href = '/';
+            } else window.alert('I said, you shall not pass!!!!!!!');
         }).catch(function(err) {
-            console.log(err);
+            window.alert(err);
         })
-        //this.props.manager_login();
-        //window.location.href = '/';
     }
 
     returnModalContent = () => {
