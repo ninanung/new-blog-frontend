@@ -62,13 +62,13 @@ class ManageMode extends React.Component {
 
     render() {
         return (
-            <Modal onCloseClick={this.props.onClickFunction} content={this.returnModalContent()} />
+            <Modal onCloseClick={this.props.onCloseClickFunction} content={this.returnModalContent()} />
         )
     }
 };
 
 ManageMode.propTypes = {
-    onClickFunction: PropTypes.func.isRequired,
+    onCloseClickFunction: PropTypes.func.isRequired,
 }
 
 export default connect(null, mapDispatchToProps)(ManageMode);

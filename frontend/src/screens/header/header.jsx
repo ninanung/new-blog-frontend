@@ -64,8 +64,8 @@ class Header extends React.Component {
                     {this.props.manager ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
                 </div>
                 <div className='modal_group'>
-                    {this.state.manage ? <ManageMode onClickFunction={this.onManageClick.bind(null, false)}/> : null}
-                    {this.state.post ? <MakePost edit={false} onClickFunction={this.onPostClick.bind(null, false)}/> : null}
+                    {this.state.manage ? <ManageMode onCloseClickFunction={this.onManageClick.bind(null, false)}/> : null}
+                    {this.state.post ? <MakePost edit={false} onCloseClickFunction={this.onPostClick.bind(null, false)}/> : null}
                 </div>
             </div>
         )

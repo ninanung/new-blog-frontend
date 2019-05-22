@@ -60,6 +60,7 @@ class MakePost extends React.Component {
     }
     
     onPostClick = () => {
+        const { onCloseClickFunction } = this.props;
         const content = this.state.editor.getHtml();
         fetch(CREATE_POST, {
             method: 'post',
@@ -72,9 +73,10 @@ class MakePost extends React.Component {
                 'text': content,
             }),
         }).then(res => res.json()).then(function(data) {
-            window.alert(data);
+            onCloseClickFunction();
+            window.alert(data.message);
         }).catch(function(err) {
-            window.alert(err);
+            window.alert(err.message);
         })
     }
 
@@ -104,7 +106,7 @@ class MakePost extends React.Component {
     render() {
         return (
             <div>
-                <Modal onCloseClick={this.props.onClickFunction} content={this.returnModalContent()} />
+                <Modal onCloseClick={this.props.onCloseClickFunction} content={this.returnModalContent()} />
             </div>
         )
     }
@@ -112,7 +114,7 @@ class MakePost extends React.Component {
 
 MakePost.propTypes = {
     edit: PropTypes.bool.isRequired,
-    onClickFunction: PropTypes.func.isRequired,
+    onCloseClickFunction: PropTypes.func.isRequired,
 }
 
 export default MakePost;
