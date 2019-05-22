@@ -16,14 +16,7 @@ const mapStateToProps = (state) => {
 
 class Home extends React.Component {
     render() {
-        //const { posts } = this.props;
-        const posts = [];
-        for(let i = 0; i < 10; i++) {
-            posts.push({
-                title: `test title ${i}`,
-                date: new Date().getTime(),
-            })
-        }
+        const { posts } = this.props;
 
         return (
             <div className='home_body'>

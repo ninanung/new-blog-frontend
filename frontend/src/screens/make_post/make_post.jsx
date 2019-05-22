@@ -1,9 +1,7 @@
 import React from 'react';
 import Editor from 'tui-editor';
 import PropTypes from 'prop-types';
-/*import { CREATE_POST, EDIT_POST } from '../../constants/server';
-import request from 'request';
-import rp from 'request-promise';*/
+import { CREATE_POST, EDIT_POST } from '../../constants/server';
 
 import './make_post.css';
 
@@ -44,20 +42,40 @@ class MakePost extends React.Component {
 
     onEditClick = () => {
         const content = this.state.editor.getHtml();
-        console.log(this.state.title);
-        console.log(content);
-        /*
-            request를 이용한 server로의 데이터 전송 필요.
-        */
+        fetch(EDIT_POST, {
+            method: 'post',
+            headers: new Headers({
+                'auth': '1004Nmnm!',
+                "Content-Type": "application/json",
+            }),
+            body: JSON.stringify({
+                'title': this.state.title,
+                'text': content,
+            }),
+        }).then(res => res.json()).then(function(data) {
+            window.alert(data);
+        }).catch(function(err) {
+            window.alert(err);
+        })
     }
     
     onPostClick = () => {
         const content = this.state.editor.getHtml();
-        console.log(this.state.title);
-        console.log(content);
-        /*
-            request를 이용한 server로의 데이터 전송 필요.
-        */
+        fetch(CREATE_POST, {
+            method: 'post',
+            headers: new Headers({
+                'auth': '1004Nmnm!',
+                "Content-Type": "application/json",
+            }),
+            body: JSON.stringify({
+                'title': this.state.title,
+                'text': content,
+            }),
+        }).then(res => res.json()).then(function(data) {
+            window.alert(data);
+        }).catch(function(err) {
+            window.alert(err);
+        })
     }
 
     returnModalContent = () => {
