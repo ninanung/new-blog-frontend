@@ -1,8 +1,6 @@
 import React from 'react';
-/*import request from 'request';
-import rp from 'request-promise';
 
-import constants from '../../constants/server';*/
+import { GET_POSTS } from './constants/server';
 
 import './App.css';
 
@@ -30,21 +28,33 @@ const mapDispatchToProps = (dispatch) => {
 
 class App extends React.Component {
   componentWillMount() {
-    const { posts, last_updated, renew_posts } = this.props;
+    const { posts, last_updated, renew_posts, renew_last_updated } = this.props;
     const now = new Date().getTime();
     if(posts.length === 0) {
-      /*
-        서버에서 포스트 리스트 받아옮
-      */
-      //renew_posts();
-      //renew_last_updated(now);
+      fetch(GET_POSTS, {
+        method: 'get',
+        headers: new Headers({
+          'auth': '1004Nmnm!', 
+        })
+      }).then(res => res.json()).then(function(data) {
+        renew_posts(data.posts);
+        renew_last_updated(now);
+      }).catch(function(err) {
+        window.alert(err.message);
+      });
     } else {
-      if(now - last_updated > 3600000) {
-        /*
-          서버에서 포스트 리스트 받아옮
-        */
-        //renew_posts();
-        //renew_last_updated(now);
+      if(now - last_updated > 600000) {
+        fetch(GET_POSTS, {
+          method: 'get',
+          headers: new Headers({
+            'auth': '1004Nmnm!', 
+          })
+        }).then(res => res.json()).then(function(data) {
+          renew_posts(data.posts);
+          renew_last_updated(now);
+        }).catch(function(err) {
+          window.alert(err.message);
+        });
       }
     }
   }

@@ -1,7 +1,10 @@
 import React from 'react';
 
+import './post.css';
+
 import MakePost from '../../screens/make_post/make_post';
 import Button from '../button/button';
+import RouterLink from '../router_link/router_link';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -49,19 +52,27 @@ class Post extends React.Component {
         })
     }
 
+    onLinkClick = (to) => {
+        this.props.history.push(to);
+    }
+
     render() {
         const { post } = this.state;
+        const { posts, match } = this.props;
         const date = new Date(post.date);
         const dateString = `${date.getFullYear()} ${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
 
         return (
             <div className='post'>
-                {this.state.makePost ? <MakePost edit={true} onClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
+                {this.state.makePost ? <MakePost edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
                 <h2>{post.title}</h2>
                 <p>{dateString}</p>
                 <div id='post_content' className='post_content'></div>
                 <div className='post_button_group'>
-                    {!this.props.manager ? <Button text='Edit Post' onClickFunction={this.onMakePostClick.bind(null, true)} /> : null}
+                    {posts[parseInt(match.params.index) + 1] ? <Button text='< Previous' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) + 1}`)} /> : null}
+                    {this.props.manager ? <Button text='Edit Post' onClickFunction={this.onMakePostClick.bind(null, true)} /> : null}
+                    <Button text='Link' onClickFunction={this.onLinkClick.bind(null, '/board')} />
+                    {posts[parseInt(match.params.index) - 1] ? <Button text='next >' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) - 1}`)} /> : null}
                 </div>
             </div>
         )

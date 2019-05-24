@@ -1,5 +1,5 @@
 const state = {
-    last_updated: null,
+    last_updated: 0,
     posts: [],
     manager: false,
 }

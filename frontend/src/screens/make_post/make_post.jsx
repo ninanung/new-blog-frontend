@@ -41,7 +41,9 @@ class MakePost extends React.Component {
     }
 
     onEditClick = () => {
-        const content = this.state.editor.getHtml();
+        const { onCloseClickFunction } = this.props;
+        const { title, editor } = this.state;
+        const content = editor.getHtml();
         fetch(EDIT_POST, {
             method: 'post',
             headers: new Headers({
@@ -49,7 +51,7 @@ class MakePost extends React.Component {
                 "Content-Type": "application/json",
             }),
             body: JSON.stringify({
-                'title': this.state.title,
+                'title': title,
                 'text': content,
             }),
         }).then(res => res.json()).then(function(data) {
@@ -61,15 +63,16 @@ class MakePost extends React.Component {
     
     onPostClick = () => {
         const { onCloseClickFunction } = this.props;
-        const content = this.state.editor.getHtml();
+        const { title, editor } = this.state;
+        const content = editor.getHtml();
         fetch(CREATE_POST, {
             method: 'post',
             headers: new Headers({
                 'auth': '1004Nmnm!',
-                "Content-Type": "application/json",
+                'Content-Type': 'application/json',
             }),
             body: JSON.stringify({
-                'title': this.state.title,
+                'title': title,
                 'text': content,
             }),
         }).then(res => res.json()).then(function(data) {
