@@ -4,7 +4,6 @@ import './post.css';
 
 import MakePost from '../../screens/make_post/make_post';
 import Button from '../button/button';
-import RouterLink from '../router_link/router_link';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -52,6 +51,10 @@ class Post extends React.Component {
         })
     }
 
+    onDeleteClick = () => {
+        console.log(this.state.post);
+    }
+
     onLinkClick = (to) => {
         this.props.history.push(to);
     }
@@ -64,14 +67,15 @@ class Post extends React.Component {
 
         return (
             <div className='post'>
-                {this.state.makePost ? <MakePost edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
+                {this.state.makePost ? <MakePost post={post} edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
                 <h2>{post.title}</h2>
                 <p>{dateString}</p>
                 <div id='post_content' className='post_content'></div>
                 <div className='post_button_group'>
                     {posts[parseInt(match.params.index) + 1] ? <Button text='< Previous' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) + 1}`)} /> : null}
-                    {this.props.manager ? <Button text='Edit Post' onClickFunction={this.onMakePostClick.bind(null, true)} /> : null}
-                    <Button text='Link' onClickFunction={this.onLinkClick.bind(null, '/board')} />
+                    {this.props.manager ? <Button text='Edit' onClickFunction={this.onMakePostClick.bind(null, true)} /> : null}
+                    {this.props.manager ? <Button text='Delete' onClickFunction={this.onDeleteClick} /> : null}
+                    <Button text='List' onClickFunction={this.onLinkClick.bind(null, '/board')} />
                     {posts[parseInt(match.params.index) - 1] ? <Button text='next >' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) - 1}`)} /> : null}
                 </div>
             </div>

@@ -25,12 +25,25 @@ class MakePost extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            editor: new Editor({
+        const { post } = this.props;
+        let editor = null;
+        if(post) {
+            editor = new Editor({
                 el: document.querySelector('#editSection'),
                 initialEditType: 'markdown',
                 previewStyle: 'vertical',
-            }),
+                initialValue: post.text,
+            })
+        } else {
+            editor = new Editor({
+                el: document.querySelector('#editSection'),
+                initialEditType: 'markdown',
+                previewStyle: 'vertical',
+            })
+        }
+
+        this.setState({
+            editor,
         });
     }
 
@@ -41,7 +54,7 @@ class MakePost extends React.Component {
     }
 
     onEditClick = () => {
-        const { onCloseClickFunction } = this.props;
+        const { onCloseClickFunction, post } = this.props;
         const { title, editor } = this.state;
         const content = editor.getHtml();
         fetch(EDIT_POST, {
@@ -53,8 +66,10 @@ class MakePost extends React.Component {
             body: JSON.stringify({
                 'title': title,
                 'text': content,
+                'id': post.id,
             }),
         }).then(res => res.json()).then(function(data) {
+            onCloseClickFunction();
             window.alert(data);
         }).catch(function(err) {
             window.alert(err);
@@ -64,7 +79,7 @@ class MakePost extends React.Component {
     onPostClick = () => {
         const { onCloseClickFunction } = this.props;
         const { title, editor } = this.state;
-        const content = editor.getHtml();
+        const content = editor.getMarkdown(); //getHtml();
         fetch(CREATE_POST, {
             method: 'post',
             headers: new Headers({
@@ -118,6 +133,7 @@ class MakePost extends React.Component {
 MakePost.propTypes = {
     edit: PropTypes.bool.isRequired,
     onCloseClickFunction: PropTypes.func.isRequired,
+    post: PropTypes.object,
 }
 
 export default MakePost;
