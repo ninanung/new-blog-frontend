@@ -41,7 +41,6 @@ class MakePost extends React.Component {
                 previewStyle: 'vertical',
             })
         }
-
         this.setState({
             editor,
         });
@@ -54,9 +53,9 @@ class MakePost extends React.Component {
     }
 
     onEditClick = () => {
-        const { onCloseClickFunction, post } = this.props;
+        const { post } = this.props;
         const { title, editor } = this.state;
-        const content = editor.getHtml();
+        const content = editor.getMarkdown();
         fetch(EDIT_POST, {
             method: 'post',
             headers: new Headers({
@@ -69,8 +68,8 @@ class MakePost extends React.Component {
                 'id': post.id,
             }),
         }).then(res => res.json()).then(function(data) {
-            onCloseClickFunction();
-            window.alert(data);
+            window.location.reload();
+            window.alert(data.message);
         }).catch(function(err) {
             window.alert(err);
         })
@@ -79,7 +78,7 @@ class MakePost extends React.Component {
     onPostClick = () => {
         const { onCloseClickFunction } = this.props;
         const { title, editor } = this.state;
-        const content = editor.getMarkdown(); //getHtml();
+        const content = editor.getMarkdown();
         fetch(CREATE_POST, {
             method: 'post',
             headers: new Headers({

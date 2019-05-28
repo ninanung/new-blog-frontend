@@ -1,9 +1,16 @@
 import React from 'react';
+import Editor from 'tui-editor';
 
 import './post.css';
 
+import { DELETE_POST } from '../../constants/server';
+
 import MakePost from '../../screens/make_post/make_post';
 import Button from '../button/button';
+
+// for Toast editer
+import 'tui-editor/dist/tui-editor-Viewer.js';
+import 'tui-editor/dist/tui-editor-contents.css'; // editor content
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,6 +35,7 @@ class Post extends React.Component {
         this.state = {
             post: null,
             makePost: false,
+            editor: null,
         }
     }
 
@@ -41,8 +49,15 @@ class Post extends React.Component {
     }
 
     componentDidMount() {
-        const postBody = document.getElementById('post_content');
-        postBody.innerHTML = this.state.post.text;
+        const editor = new Editor.factory({
+            el: document.querySelector('#viewerSection'),
+            viewer: true,
+            height: '300px',
+            initialValue: this.state.post.text,
+        })
+        this.setState({
+            editor,
+        })
     }
 
     onMakePostClick = (change) => {
@@ -52,7 +67,22 @@ class Post extends React.Component {
     }
 
     onDeleteClick = () => {
-        console.log(this.state.post);
+        const { post } = this.state;
+        fetch(DELETE_POST, {
+            method: 'post',
+            headers: new Headers({
+                'auth': '1004Nmnm!',
+                "Content-Type": "application/json",
+            }),
+            body: JSON.stringify({
+                'id': post.id,
+            }),
+        }).then(res => res.json()).then(function(data) {
+            window.location.href = '/board';
+            window.alert(data.message);
+        }).catch(function(err) {
+            window.alert(err);
+        })
     }
 
     onLinkClick = (to) => {
@@ -70,7 +100,9 @@ class Post extends React.Component {
                 {this.state.makePost ? <MakePost post={post} edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
                 <h2>{post.title}</h2>
                 <p>{dateString}</p>
-                <div id='post_content' className='post_content'></div>
+                <div className='post_viewer'>
+                    <div id='viewerSection'></div>
+                </div>
                 <div className='post_button_group'>
                     {posts[parseInt(match.params.index) + 1] ? <Button text='< Previous' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) + 1}`)} /> : null}
                     {this.props.manager ? <Button text='Edit' onClickFunction={this.onMakePostClick.bind(null, true)} /> : null}

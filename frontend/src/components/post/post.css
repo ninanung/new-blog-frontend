@@ -1,0 +1,15 @@
+.post_viewer {
+    text-align: left !important;
+}
+
+@media (max-width: 500px) {
+    .post_viewer {
+        width: 95%; margin: 30px 2.5% 30px 2.5%;
+    }
+}
+
+@media (min-width: 500px) {
+    .post_viewer {
+        width: 80%; margin: 30px 10% 30px 10%;
+    }
+}

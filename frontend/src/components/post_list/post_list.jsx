@@ -12,10 +12,13 @@ class PostList extends React.Component {
         } else {
             renderPosts = posts.slice();
         }
+        renderPosts = renderPosts.sort((a, b) => {
+            return b.date - a.date;
+        })
         return (
             <div className='post_list'>
                 {renderPosts.length > 0 ? renderPosts.map((post, index) => {
-                    return <PostElement key={index} post={post} index={index} />
+                    return <PostElement key={index} post={post} index={renderPosts.length - 1 - index} />
                 }) : <div className='post_list_empty_text'>No Posts</div>}
             </div>
         )
