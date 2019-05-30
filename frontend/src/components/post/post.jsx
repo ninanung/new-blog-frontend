@@ -1,5 +1,6 @@
 import React from 'react';
 import Editor from 'tui-editor';
+import { Helmet } from 'react-helmet';
 
 import './post.css';
 
@@ -97,6 +98,9 @@ class Post extends React.Component {
 
         return (
             <div className='post'>
+                <Helmet>
+                    <title>{post.title}</title>
+                </Helmet>
                 {this.state.makePost ? <MakePost post={post} edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
                 <h2>{post.title}</h2>
                 <p>{dateString}</p>
