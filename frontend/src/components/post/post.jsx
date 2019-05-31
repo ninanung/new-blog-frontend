@@ -1,5 +1,4 @@
 import React from 'react';
-import Editor from 'tui-editor';
 import { Helmet } from 'react-helmet';
 
 import './post.css';
@@ -8,10 +7,7 @@ import { DELETE_POST } from '../../constants/server';
 
 import MakePost from '../../screens/make_post/make_post';
 import Button from '../button/button';
-
-// for Toast editer
-import 'tui-editor/dist/tui-editor-Viewer.js';
-import 'tui-editor/dist/tui-editor-contents.css'; // editor content
+import TuiEditorViewer from '../tui_editor_viewer/tui_editor_viewer';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -46,18 +42,6 @@ class Post extends React.Component {
         if(!index || !posts[parseInt(index)]) return window.location.href = '/404';
         else return this.setState({
             post: posts[parseInt(index)],
-        })
-    }
-
-    componentDidMount() {
-        const editor = new Editor.factory({
-            el: document.querySelector('#viewerSection'),
-            viewer: true,
-            height: '300px',
-            initialValue: this.state.post.text,
-        })
-        this.setState({
-            editor,
         })
     }
 
@@ -105,7 +89,7 @@ class Post extends React.Component {
                 <h2>{post.title}</h2>
                 <p>{dateString}</p>
                 <div className='post_viewer'>
-                    <div id='viewerSection'></div>
+                    <TuiEditorViewer height='300px' text={post.text} />
                 </div>
                 <div className='post_button_group'>
                     {posts[parseInt(match.params.index) + 1] ? <Button text='< Previous' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) + 1}`)} /> : null}

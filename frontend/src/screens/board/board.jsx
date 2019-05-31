@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import PostList from '../../components/post_list/post_list';
 
@@ -14,6 +15,9 @@ class Board extends React.Component {
     render() {
         return (
             <div>
+                <Helmet>
+                    <title>Board</title>
+                </Helmet>
                 <PostList posts={this.props.posts} />
             </div>
         )
