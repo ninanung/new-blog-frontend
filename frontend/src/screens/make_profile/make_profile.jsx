@@ -35,7 +35,6 @@ class MakeProfile extends React.Component {
     }
 
     onProfile = () => {
-        const { onCloseClickFunction } = this.props;
         const { editor } = this.state;
         const content = editor.getMarkdown();
         fetch(EDIT_PROFILE, {
@@ -48,7 +47,7 @@ class MakeProfile extends React.Component {
                 'text': content,
             }),
         }).then(res => res.json()).then(function(data) {
-            onCloseClickFunction();
+            window.location.reload();
             window.alert(data.message);
         }).catch(function(err) {
             window.alert(err.message);

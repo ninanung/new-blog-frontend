@@ -1,0 +1,15 @@
+.profile_viewer {
+    text-align: left !important;
+}
+
+@media (max-width: 500px) {
+    .profile_viewer {
+        width: 95%; margin: 30px 2.5% 30px 2.5%;
+    }
+}
+
+@media (min-width: 500px) {
+    .profile_viewer {
+        width: 70%; margin: 30px 15% 30px 15%;
+    }
+}
