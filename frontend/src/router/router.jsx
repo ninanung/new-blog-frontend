@@ -6,7 +6,8 @@ import notFoundImage from '../assets/404.jpg';
 
 import Home from '../screens/home/home';
 import Board from '../screens/board/board';
-import post from '../components/post/post';
+import Post from '../components/post/post';
+import Profile from '../screens/profile/profile';
 
 class NotFound extends React.Component {
     render() {
@@ -30,7 +31,8 @@ class Router extends React.Component {
                 <Switch>
                     <Route exact path='/' component={ Home } />
                     <Route exact path='/board' component={ Board } />
-                    <Route exact path='/post/:index' component={ post } />
+                    <Route exact path='/post/:index' component={ Post } />
+                    <Route exact path='/profile' component={ Profile } />
                     <Route component={ NotFound } />
                 </Switch>
             </BrowserRouter>

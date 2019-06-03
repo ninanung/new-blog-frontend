@@ -37,9 +37,9 @@ class Post extends React.Component {
     }
 
     componentWillMount() {
-        const { match, posts } = this.props;
+        const { match, posts, history } = this.props;
         const index = match.params.index;
-        if(!index || !posts[parseInt(index)]) return window.location.href = '/404';
+        if(!index || !posts[parseInt(index)]) return history.push('/404');
         else return this.setState({
             post: posts[parseInt(index)],
         })
@@ -70,7 +70,11 @@ class Post extends React.Component {
         })
     }
 
-    onLinkClick = (to) => {
+    onLinkClick = (to, index) => {
+        const { posts } = this.props;
+        this.setState({
+            post: posts[parseInt(index)],
+        });
         this.props.history.push(to);
     }
 
@@ -92,11 +96,11 @@ class Post extends React.Component {
                     <TuiEditorViewer height='300px' text={post.text} />
                 </div>
                 <div className='post_button_group'>
-                    {posts[parseInt(match.params.index) + 1] ? <Button text='< Previous' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) + 1}`)} /> : null}
+                    {posts[parseInt(match.params.index) - 1] ? <Button text='< Previous' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) - 1}`, parseInt(match.params.index) - 1)} /> : null}
                     {this.props.manager ? <Button text='Edit' onClickFunction={this.onMakePostClick.bind(null, true)} /> : null}
                     {this.props.manager ? <Button text='Delete' onClickFunction={this.onDeleteClick} /> : null}
                     <Button text='List' onClickFunction={this.onLinkClick.bind(null, '/board')} />
-                    {posts[parseInt(match.params.index) - 1] ? <Button text='next >' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) - 1}`)} /> : null}
+                    {posts[parseInt(match.params.index) + 1] ? <Button text='next >' onClickFunction={this.onLinkClick.bind(null,`/post/${parseInt(match.params.index) + 1}`, parseInt(match.params.index) + 1)} /> : null}
                 </div>
             </div>
         )

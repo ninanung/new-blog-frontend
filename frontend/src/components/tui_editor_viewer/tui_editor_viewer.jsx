@@ -6,17 +6,27 @@ import PropTypes from 'prop-types';
 import 'tui-editor/dist/tui-editor-Viewer.js';
 import 'tui-editor/dist/tui-editor-contents.css'; // editor content
 
+let editor = null;
+
 class TuiEditor extends React.Component {
-    componentDidMount() {
+    componentDidUpdate(prevProps, nextProps) {
         const { text, height } = this.props;
-        const editor = new Editor.factory({
+        document.getElementById('viewerSection').innerHTML = '';
+        editor = new Editor.factory({
             el: document.querySelector('#viewerSection'),
             viewer: true,
             height,
             initialValue: text,
         })
-        this.setState({
-            editor,
+    }
+
+    componentDidMount() {
+        const { text, height } = this.props;
+        editor = new Editor.factory({
+            el: document.querySelector('#viewerSection'),
+            viewer: true,
+            height,
+            initialValue: text,
         })
     }
 

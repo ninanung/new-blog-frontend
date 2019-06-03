@@ -1,5 +1,6 @@
 import React from 'react';
 import Editor from 'tui-editor';
+import PropTypes from 'prop-types';
 
 import { EDIT_PROFILE } from '../../constants/server';
 
@@ -58,7 +59,7 @@ class MakeProfile extends React.Component {
         return (
             <div className='make_post_body'>
                 <div id='editSection'></div>
-                <Button text={Profile} onClickFunction={this.onProfile()} />
+                <Button text='Edit Profile' onClickFunction={this.onProfile()} />
             </div>
         )
     }
@@ -72,7 +73,7 @@ class MakeProfile extends React.Component {
     }
 }
 
-MakePost.propTypes = {
+MakeProfile.propTypes = {
     onCloseClickFunction: PropTypes.func.isRequired,
     profile: PropTypes.object,
 }
