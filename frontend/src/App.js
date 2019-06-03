@@ -43,7 +43,7 @@ class App extends React.Component {
         window.alert(err.message);
       });
     } else {
-      if(now - last_updated > 10000) {
+      if(now - last_updated > 1000) {
         fetch(GET_POSTS, {
           method: 'get',
           headers: new Headers({

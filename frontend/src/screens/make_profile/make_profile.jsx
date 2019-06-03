@@ -59,7 +59,7 @@ class MakeProfile extends React.Component {
         return (
             <div className='make_post_body'>
                 <div id='editSection'></div>
-                <Button text='Edit Profile' onClickFunction={this.onProfile()} />
+                <Button text='Edit Profile' onClickFunction={this.onProfile} />
             </div>
         )
     }
@@ -75,7 +75,7 @@ class MakeProfile extends React.Component {
 
 MakeProfile.propTypes = {
     onCloseClickFunction: PropTypes.func.isRequired,
-    profile: PropTypes.object,
+    profile: PropTypes.string.isRequired,
 }
 
 export default MakeProfile;

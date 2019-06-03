@@ -34,6 +34,7 @@ class MakePost extends React.Component {
                 previewStyle: 'vertical',
                 initialValue: post.text,
             })
+            document.getElementById('makePostInput').value = post.title;
         } else {
             editor = new Editor({
                 el: document.querySelector('#editSection'),
@@ -53,7 +54,7 @@ class MakePost extends React.Component {
     }
 
     onEditClick = () => {
-        const { post } = this.props;
+        const { post, onCloseClickFunction } = this.props;
         const { title, editor } = this.state;
         const content = editor.getMarkdown();
         fetch(EDIT_POST, {
@@ -68,7 +69,7 @@ class MakePost extends React.Component {
                 'id': post.id,
             }),
         }).then(res => res.json()).then(function(data) {
-            window.location.reload();
+            onCloseClickFunction();
             window.alert(data.message);
         }).catch(function(err) {
             window.alert(err);
@@ -112,7 +113,7 @@ class MakePost extends React.Component {
             <div className='make_post_body'>
                 <label>
                     Title
-                    <input onChange={this.onTitleChange} className='make_post_title' type='text' />
+                    <input id='makePostInput' onChange={this.onTitleChange} className='make_post_title' type='text' />
                 </label>
                 <div id='editSection'></div>
                 <Button text={text} onClickFunction={onClickFunction} />

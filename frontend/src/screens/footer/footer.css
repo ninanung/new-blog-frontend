@@ -5,3 +5,11 @@
 .footer_link {
     width: 100px; height: 100px;
 }
+
+.footer_profile {
+    position: fixed; right: 20px; bottom: 16px; text-decoration: none; color: #444444; font-size: bold;
+}
+
+.footer_profile:hover {
+    color: #BD2235;
+}

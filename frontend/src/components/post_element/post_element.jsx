@@ -8,7 +8,7 @@ class PostElement extends React.Component {
     render() {
         const { post, index } = this.props;
         const date = new Date(post.date);
-        const dateString = `${date.getFullYear()} ${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        const dateString = `${date.getFullYear()} ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
         const url = `/post/${index}`
 
         return (

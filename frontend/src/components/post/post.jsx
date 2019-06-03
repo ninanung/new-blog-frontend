@@ -45,29 +45,31 @@ class Post extends React.Component {
         })
     }
 
-    onMakePostClick = (change) => {
+    onMakePostClick = (makePost) => {
         this.setState({
-            makePost: change,
+            makePost,
         })
     }
 
     onDeleteClick = () => {
         const { post } = this.state;
-        fetch(DELETE_POST, {
-            method: 'post',
-            headers: new Headers({
-                'auth': '1004Nmnm!',
-                "Content-Type": "application/json",
-            }),
-            body: JSON.stringify({
-                'id': post.id,
-            }),
-        }).then(res => res.json()).then(function(data) {
-            window.location.href = '/board';
-            window.alert(data.message);
-        }).catch(function(err) {
-            window.alert(err);
-        })
+        if(window.confirm('Do you really want to delete?')) {
+            fetch(DELETE_POST, {
+                method: 'post',
+                headers: new Headers({
+                    'auth': '1004Nmnm!',
+                    "Content-Type": "application/json",
+                }),
+                body: JSON.stringify({
+                    'id': post.id,
+                }),
+            }).then(res => res.json()).then(function(data) {
+                window.location.href = '/board';
+                window.alert(data.message);
+            }).catch(function(err) {
+                window.alert(err);
+            })
+        } else return ;
     }
 
     onLinkClick = (to, index) => {
@@ -82,7 +84,7 @@ class Post extends React.Component {
         const { post } = this.state;
         const { posts, match } = this.props;
         const date = new Date(post.date);
-        const dateString = `${date.getFullYear()} ${date.getMonth()}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        const dateString = `${date.getFullYear()} ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
 
         return (
             <div className='post'>
