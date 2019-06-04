@@ -23,3 +23,10 @@ export const manager_logout = () => {
         type: 'MANAGER_LOGOUT',
     }
 }
+
+export const change_dark_mode = (dark) => {
+    return {
+        type: 'CHANGE_DARK_MODE',
+        dark,
+    }
+}

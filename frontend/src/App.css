@@ -11,8 +11,21 @@
   height: var(--header-height);
 }
 
-.app_body {
+.app_body_day {
   height: calc(100% - var(--header-height) - var(--footer-height) - 1px); overflow: scroll;
+}
+
+.app_body_night {
+  height: calc(100% - var(--header-height) - var(--footer-height) - 1px); overflow: scroll;
+  background-color: #4B4B4B !important;
+}
+
+.app_body_night h1, .app_body_night h2, .app_body_night h3, .app_body_night h4, .app_body_night h5, .app_body_night h6, .app_body_night p, .app_body_night a {
+  color: #E6E8E6 !important;
+}
+
+.app_body_night pre {
+  background-color: #426142 !important;
 }
 
 .app_footer {

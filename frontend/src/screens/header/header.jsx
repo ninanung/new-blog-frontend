@@ -15,12 +15,14 @@ import * as actions from '../../store/action';
 const mapStateToProps = (state) => {
     return {
         manager: state.manager,
+        dark: state.dark,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        manager_logout: actions.manager_logout
+        manager_logout: actions.manager_logout,
+        change_dark_mode: actions.change_dark_mode,
     }, dispatch)
 }
 
@@ -52,6 +54,11 @@ class Header extends React.Component {
         return window.location.href = '/';
     }
 
+    onDarkClick = () => {
+        const { change_dark_mode, dark } = this.props;
+        change_dark_mode(!dark);
+    }
+
     render() {
         return (
             <div className='header'>
@@ -62,6 +69,7 @@ class Header extends React.Component {
                 </div>
                 <div className='button_group_left'>
                     {this.props.manager ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
+                    <Button text='Dark' onClickFunction={this.onDarkClick} />
                 </div>
                 <div className='modal_group'>
                     {this.state.manage ? <ManageMode onCloseClickFunction={this.onManageClick.bind(null, false)}/> : null}

@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
   return {
     posts: state.posts,
     last_updated: state.last_updated,
+    dark: state.dark,
   }
 }
 
@@ -65,9 +66,14 @@ class App extends React.Component {
         <div className='app_header'>
           <Header />
         </div>
-        <div className='app_body'>
-          <Router/>
-        </div>
+          {this.props.dark ? 
+            <div className='app_body_night'>
+              <Router/>
+            </div> :
+            <div className='app_body_day'>
+              <Router/>
+            </div>
+          }
         <div className='app_footer'>
           <Footer />
         </div>
