@@ -14,47 +14,52 @@ class PostList extends React.Component {
 
     componentWillMount() {
         const { posts, count } = this.props;
+        let renderPosts = [];
+        if(count) renderPosts = this.normalList(this.sliceAndSort(posts, count));    
+        else renderPosts = this.yearList(this.sliceAndSort(posts, count));
         this.setState({
-            renderPosts: this.returnList(posts, count),
-        })
+            renderPosts,
+        }) 
     }
 
-    returnList = (posts, count) => {
-        if(posts.length <= 0) return <div className='post_list_empty_text'>No Posts</div>;
+    sliceAndSort = (posts, count) => {
         let renderPosts = posts
         if(count) renderPosts = posts.slice(0, count);
         else renderPosts = posts.slice();
-        renderPosts = renderPosts.sort((a, b) => {
-            return b.date - a.date;
-        })
-        const year = new Date(renderPosts[0].date).getFullYear();
-        renderPosts = renderPosts.map((post, index) => {
-            if(!count && index === 0) return (
-                <div key={index}>
-                    <YearDivider year={year} />
-                    <PostElement post={post} index={renderPosts.length - 1 - index} />
-                </div>
-            )
-            const postYear = new Date(post.date).getFullYear()
-            if(!count && postYear < year) {
-                year = postYear;
-                return (
-                    <div key={index}>
-                        <YearDivider year={year} />
-                        <PostElement post={post} index={renderPosts.length - 1 - index} />
-                    </div>
-                )
-            }
-            return <PostElement key={index} post={post} index={renderPosts.length - 1 - index} />
-        })
         return renderPosts;
+    }
+
+    normalList = (posts) => {
+        console.log(posts);
+        return posts.map((post, index) => {
+            return <PostElement key={index} post={post} index={index} />
+        })
+    }
+
+    yearList = (posts) => {
+        console.log(posts);
+        let year = new Date(posts[0].date).getFullYear();
+        let point = 0;
+        const renderPosts = []
+        for(let index in posts) {
+            const postYear = new Date(posts[index].date).getFullYear()
+            if(year !== postYear) {
+                renderPosts.push(<YearDivider key={index} year={year} posts={posts.slice(point, index)} hide={point === 0}/>)
+                year = postYear;
+                point = index;
+            }
+            if(index == posts.length - 1) {
+                renderPosts.push(<YearDivider key={index} year={year} posts={posts.slice(point, index + 1)} hide={point === 0}/>)
+            }
+        }
+        return renderPosts
     }
 
     render() {
         const { renderPosts } = this.state;
         return (
             <div className='post_list'>
-                {renderPosts}
+                {renderPosts.length > 0 ? renderPosts : <div className='post_list_empty_text'>No Posts</div>}
             </div>
         )
     }

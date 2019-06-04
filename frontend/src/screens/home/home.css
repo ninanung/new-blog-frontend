@@ -3,7 +3,7 @@
 }
 
 .home_body_recent {
-    margin: 0 0 50px 0; text-decoration: none; color: #444444; padding-top: 100px;
+    margin: 0 0 50px 0; text-decoration: none; color: #444444;
 }
 
 @media (max-width: 500px) {
