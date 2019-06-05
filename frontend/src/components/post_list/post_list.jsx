@@ -30,14 +30,12 @@ class PostList extends React.Component {
     }
 
     normalList = (posts) => {
-        console.log(posts);
         return posts.map((post, index) => {
             return <PostElement key={index} post={post} index={index} />
         })
     }
 
     yearList = (posts) => {
-        console.log(posts);
         let year = new Date(posts[0].date).getFullYear();
         let point = 0;
         const renderPosts = []

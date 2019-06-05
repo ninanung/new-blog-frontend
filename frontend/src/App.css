@@ -1,35 +1,64 @@
 :root {
   --header-height: 100px;
   --footer-height: 50px;
+  --border: 1px solid #D6C7C9;
+  --night-background: #4B4B4B;
+  --night-textcolor: #E6E8E6;
+  --night-buttoncolor: #003168;
 }
 
 .app {
   text-align: center; height: 100vh;
 }
 
-.app_header {
-  height: var(--header-height);
+/* app_header */
+.app_header_day {
+  height: var(--header-height); border-bottom: var(--border);
 }
 
+.app_header_night {
+  height: var(--header-height); border-bottom: var(--border);
+  background-color: var(--night-background);
+}
+
+.app_header_night button {
+  background-color: var(--night-buttoncolor); border-color: var(--night-buttoncolor);
+}
+
+/* app_body */
 .app_body_day {
-  height: calc(100% - var(--header-height) - var(--footer-height) - 1px); overflow: scroll;
+  height: calc(100% - var(--header-height) - var(--footer-height) - 2px); overflow: scroll;
 }
 
 .app_body_night {
-  height: calc(100% - var(--header-height) - var(--footer-height) - 1px); overflow: scroll;
-  background-color: #4B4B4B !important;
+  height: calc(100% - var(--header-height) - var(--footer-height) - 2px); overflow: scroll;
+  background-color: var(--night-background);
 }
 
 .app_body_night h1, .app_body_night h2, .app_body_night h3, .app_body_night h4, .app_body_night h5, .app_body_night h6, .app_body_night p, .app_body_night a {
-  color: #E6E8E6 !important;
+  color: var(--night-textcolor) !important;
 }
 
 .app_body_night pre {
   background-color: #426142 !important;
 }
 
-.app_footer {
-  height: var(--footer-height); border-top: 1px solid #D6C7C9;
+.app_body_night button {
+  background-color: var(--night-buttoncolor) !important; border-color: var(--night-buttoncolor) !important;
+}
+
+/* app_footer */
+.app_footer_day {
+  height: var(--footer-height); border-top: var(--border);
+}
+
+.app_footer_night {
+  height: var(--footer-height); border-top: var(--border);
+  background-color: var(--night-background);
+}
+
+.app_footer_night h1, .app_footer_night h2, .app_footer_night h3, .app_footer_night h4, .app_footer_night h5, .app_footer_night h6, .app_footer_night p, .app_footer_night a {
+  color: var(--night-textcolor) !important;
 }
 
 ::-webkit-scrollbar {
