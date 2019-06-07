@@ -15,14 +15,18 @@ const mapStateToProps = (state) => {
 }
 
 class Home extends React.Component {
+    componentWillMount() {
+        this.setState({
+            helmet: <Helmet><title>Home</title></Helmet>
+        })
+    }
+
     render() {
         const { posts } = this.props;
 
         return (
             <div className='home_body'>
-                <Helmet>
-                    <title>Home</title>
-                </Helmet>
+                {this.state.helmet}
                 <div className='home_body_latest'>
                     <h3 className='home_body_recent'>Recent Posts</h3>
                     <PostList posts={posts} count={5} />

@@ -61,6 +61,10 @@
   color: var(--night-textcolor) !important;
 }
 
+.app_footer_night a:hover, .app_body_night a:hover, .app_header_night a:hover, .app_body_night .year_tag:hover {
+  color: #BD2235 !important;
+}
+
 ::-webkit-scrollbar {
   width: 0; height: 0;
 }

@@ -36,6 +36,7 @@ class PostList extends React.Component {
     }
 
     yearList = (posts) => {
+        if(!posts.length) return [];
         let year = new Date(posts[0].date).getFullYear();
         let point = 0;
         const renderPosts = []
@@ -57,7 +58,7 @@ class PostList extends React.Component {
         const { renderPosts } = this.state;
         return (
             <div className='post_list'>
-                {renderPosts.length > 0 ? renderPosts : <div className='post_list_empty_text'>No Posts</div>}
+                {renderPosts.length > 0 ? renderPosts : <div className='post_list_empty_text'><p>No Posts</p></div>}
             </div>
         )
     }

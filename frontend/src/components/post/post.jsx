@@ -36,13 +36,20 @@ class Post extends React.Component {
         }
     }
 
-    componentWillMount() {
+    /*componentWillMount() {
         const { match, posts, history } = this.props;
         const index = match.params.index;
         if(!index || !posts[parseInt(index)]) return history.push('/404');
-        else return this.setState({
-            post: posts[parseInt(index)],
-        })
+        else {
+            const post = posts[parseInt(index)]
+            return this.setState({
+                post,
+            })
+        }
+    }*/
+
+    componentWillUpdate() {
+
     }
 
     onMakePostClick = (makePost) => {
@@ -81,11 +88,13 @@ class Post extends React.Component {
     }
 
     render() {
-        const { post } = this.state;
-        const { posts, match } = this.props;
+        //const { post } = this.state;
+        const { posts, match, history } = this.props;
+        const index = match.params.index;
+        if(!index || !posts[parseInt(index)]) return history.push('/404');
+        const post = posts[parseInt(index)]
         const date = new Date(post.date);
         const dateString = `${date.getFullYear()} ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
-
         return (
             <div className='post'>
                 <Helmet>

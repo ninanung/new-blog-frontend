@@ -23,11 +23,15 @@ class Profile extends React.Component {
         this.state = {
             profile: '',
             makeProfile: false,
+            helmet: null,
         }
     }
 
     componentWillMount() {
         const updateState = this.updateState;
+        this.setState({
+            helmet: <Helmet><title>Profile</title></Helmet>
+        })
         fetch(GET_PROFILE, {
             method: 'get',
         }).then(res => res.json()).then(function(data) {
@@ -50,13 +54,11 @@ class Profile extends React.Component {
     }
 
     render() {
-        const { profile, makeProfile } = this.state;
+        const { profile, makeProfile, helmet } = this.state;
         const { manager } = this.props;
         return (
             <div>
-                <Helmet>
-                    <title>Profile</title>
-                </Helmet>
+                {helmet}
                 {makeProfile ? <MakeProfile profile={profile} onCloseClickFunction={this.onMakeProfileClick.bind(null, false)} /> : null}
                 {profile ? <div className='profile_viewer'><TuiEditorViewer text={profile} height='300px' /></div> : <h2>There's no profile yet.</h2>}
                 {manager ? <Button text='Edit Profile' onClickFunction={this.onMakeProfileClick.bind(null, true)} /> : null}

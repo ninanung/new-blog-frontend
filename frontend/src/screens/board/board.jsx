@@ -12,12 +12,16 @@ const mapStateToProps = (state) => {
 }
 
 class Board extends React.Component {
+    componentWillMount() {
+        this.setState({
+            helmet: <Helmet><title>Board</title></Helmet>
+        })
+    }
+
     render() {
         return (
             <div>
-                <Helmet>
-                    <title>Board</title>
-                </Helmet>
+                {this.state.helmet}
                 <PostList posts={this.props.posts} />
             </div>
         )

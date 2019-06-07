@@ -10,12 +10,16 @@ import Post from '../components/post/post';
 import Profile from '../screens/profile/profile';
 
 class NotFound extends React.Component {
+    componentWillMount() {
+        this.setState({
+            helmet: <Helmet><title>404</title></Helmet>
+        })
+    }
+
     render() {
         return (
             <div>
-                <Helmet>
-                    <title>404</title>
-                </Helmet>
+                {this.state.helmet}
                 <h1>Error: 404 not found</h1>
                 <h2>There's no page for this URL. Please return to <a href='/'>main page.</a></h2>
                 <img src={notFoundImage} style={{width: '70%', height: 'auto'}} alt='HK M4' />
