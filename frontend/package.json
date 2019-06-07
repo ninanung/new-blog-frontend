@@ -50,6 +50,7 @@
     "react-redux": "^7.0.3",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-toggle-button": "^2.2.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "resolve": "1.10.0",

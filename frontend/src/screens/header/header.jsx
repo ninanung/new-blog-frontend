@@ -7,6 +7,7 @@ import haruko from '../../assets/haruko_bass.gif';
 import Button from '../../components/button/button';
 import ManageMode from '../manage_mode/manage_mode';
 import MakePost from '../make_post/make_post';
+import SlideButton from '../../components/slide_button/slide_button';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -56,7 +57,8 @@ class Header extends React.Component {
 
     onDarkClick = () => {
         const { change_dark_mode, dark } = this.props;
-        change_dark_mode(!dark);
+        const change = !dark;
+        change_dark_mode(change);
     }
 
     render() {
@@ -69,7 +71,7 @@ class Header extends React.Component {
                 </div>
                 <div className='button_group_left'>
                     {this.props.manager ? <Button text='New Post' onClickFunction={this.onPostClick.bind(null, true)} /> : null}
-                    <Button text='Dark' onClickFunction={this.onDarkClick} />
+                    <SlideButton onSlideChange={this.onDarkClick} />
                 </div>
                 <div className='modal_group'>
                     {this.state.manage ? <ManageMode onCloseClickFunction={this.onManageClick.bind(null, false)}/> : null}

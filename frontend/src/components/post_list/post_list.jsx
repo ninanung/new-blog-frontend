@@ -46,7 +46,7 @@ class PostList extends React.Component {
                 year = postYear;
                 point = index;
             }
-            if(index == posts.length - 1) {
+            if(parseInt(index) === posts.length - 1) {
                 renderPosts.push(<YearDivider key={index} year={year} posts={posts.slice(point, index + 1)} hide={point === 0}/>)
             }
         }

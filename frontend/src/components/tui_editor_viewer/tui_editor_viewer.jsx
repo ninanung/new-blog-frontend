@@ -22,6 +22,7 @@ class TuiEditor extends React.Component {
 
     componentDidMount() {
         const { text, height } = this.props;
+        if(false) console.log(editor);
         editor = new Editor.factory({
             el: document.querySelector('#viewerSection'),
             viewer: true,
