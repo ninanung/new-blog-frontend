@@ -48,10 +48,6 @@ class Post extends React.Component {
         }
     }*/
 
-    componentWillUpdate() {
-
-    }
-
     onMakePostClick = (makePost) => {
         this.setState({
             makePost,

@@ -64,30 +64,15 @@ class App extends React.Component {
     const { dark } = this.props;
     return (
       <div className='app'>
-        {dark ?
-          <div className='app_header_night'>
-            <Header />
-          </div> :
-          <div className='app_header_day'>
-            <Header />
-          </div>    
-        }
-        {this.props.dark ? 
-          <div className='app_body_night'>
-            <Router/>
-          </div> :
-          <div className='app_body_day'>
-            <Router/>
-          </div>
-        }
-        {dark ?
-          <div className='app_footer_night'>
-            <Footer />
-          </div> :
-          <div className='app_footer_day'>
-            <Footer />
-          </div>    
-        }
+        <div className={dark ? 'app_header_night' : 'app_header_day'}>
+          <Header />
+        </div>
+        <div className={dark ? 'app_body_night' : 'app_body_day'}>
+          <Router/>
+        </div>
+        <div className={dark ? 'app_footer_night' : 'app_footer_day'}>
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:3478';
+const SERVER_URL = 'http://localhost:3080';
 
 export const CREATE_POST = `${SERVER_URL}/post/post/create`;
 export const LOGIN = `${SERVER_URL}/login/get`;
