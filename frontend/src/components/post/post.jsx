@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 import './post.css';
 
@@ -35,18 +34,6 @@ class Post extends React.Component {
             editor: null,
         }
     }
-
-    /*componentWillMount() {
-        const { match, posts, history } = this.props;
-        const index = match.params.index;
-        if(!index || !posts[parseInt(index)]) return history.push('/404');
-        else {
-            const post = posts[parseInt(index)]
-            return this.setState({
-                post,
-            })
-        }
-    }*/
 
     onMakePostClick = (makePost) => {
         this.setState({
@@ -84,18 +71,15 @@ class Post extends React.Component {
     }
 
     render() {
-        //const { post } = this.state;
         const { posts, match, history } = this.props;
         const index = match.params.index;
         if(!index || !posts[parseInt(index)]) return history.push('/404');
         const post = posts[parseInt(index)]
         const date = new Date(post.date);
         const dateString = `${date.getFullYear()} ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
+        document.title = post.title;
         return (
             <div className='post'>
-                <Helmet>
-                    <title>{post.title}</title>
-                </Helmet>
                 {this.state.makePost ? <MakePost post={post} edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
                 <h2>{post.title}</h2>
                 <p>{dateString}</p>
