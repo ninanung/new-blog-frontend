@@ -10,6 +10,6 @@
 
 @media (min-width: 500px) {
     .profile_viewer {
-        width: 70%; margin: 30px 15% 30px 15%;
+        width: 50%; margin: 30px 25% 30px 25%;
     }
 }
