@@ -35,6 +35,16 @@ class Post extends React.Component {
         }
     }
 
+    componentWillMount() {
+        const { posts, match, history } = this.props;
+        const index = match.params.index;
+        if(!index || !posts[parseInt(index)]) return history.push('/404');
+        const post = posts[parseInt(index)]
+        this.setState({
+            post,
+        })     
+    }
+
     onMakePostClick = (makePost) => {
         this.setState({
             makePost,
@@ -71,13 +81,11 @@ class Post extends React.Component {
     }
 
     render() {
-        const { posts, match, history } = this.props;
-        const index = match.params.index;
-        if(!index || !posts[parseInt(index)]) return history.push('/404');
-        const post = posts[parseInt(index)]
+        const { posts, match } = this.props;
+        const { post } = this.state;
         const date = new Date(post.date);
         const dateString = `${date.getFullYear()} ${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes()}`
-        document.title = post.title;
+        document.title = post.title;   
         return (
             <div className='post'>
                 {this.state.makePost ? <MakePost post={post} edit={true} onCloseClickFunction={this.onMakePostClick.bind(null, false)} /> : null}
